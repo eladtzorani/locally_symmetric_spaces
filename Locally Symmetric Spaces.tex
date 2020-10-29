@@ -1,0 +1,277 @@
+\documentclass[10pt, twoside]{book}
+
+%%%%%%%%%
+% Maths %
+%%%%%%%%%
+
+\usepackage{math-fonts}
+\usepackage{math-graphics}
+\usepackage{math-symbols}
+\usepackage{math-theorems}
+
+%%%%%%%%%
+% Title %
+%%%%%%%%%
+
+\title{Lecture Notes to Locally Symmetric Spaces \\ \large{Winter 2020, Weizmann Institute}}
+\author{Lectures by Prof. Tsachik Gelander \\ \small{Typed by Elad Tzorani}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Preliminaries}
+
+\section{Definitions}
+
+\subsection{Symmetric Spaces}
+
+\begin{definition}[Symmetric Space]
+A \emph{symmetric space} is a connected and simply connected Riemannian manifold $X$ such that for every $p \in X$ there's an isometry $i_p$ such that
+\begin{enumerate}
+\item $\i_p\prs{p} = p$.
+\item $\prs{d i_p}_p = -\id$.
+\end{enumerate}
+\end{definition}
+
+\begin{examples*}
+\enumthm
+\begin{enumerate}
+\item $\mbb{R}^n$ is a symmetric space. At $0$ there's a reflection $x \mapsto -x$, and at any other point there's a translation of this reflection. The curvature of this is $0$.
+\item $S^n$, for $n > 1$, is a symmetric space, similarly. The curvature of this is $1$. If $n = 1$, $S^n$ isn't simply connected.
+\item $\mbb{H}^n$ is a symmetric space. The curvature of this is $-1$.
+\item $\mbb{R}^2 \times \mbb{H}^3 \times S^5$, or any other product of symmetric spaces.
+\end{enumerate}
+\end{examples*}
+
+\begin{proposition}[De-Rham Decomposition]
+Any symmetric space decomposes uniquely as a direct product of irreducible factors.
+\end{proposition}
+
+\begin{definition}[Symmetric Spaces of Non-Compact Type]
+A symmetric space is said to be \emph{of non-compact type} if it has neither Euclidean nor compact factors. 
+\end{definition}
+
+\begin{example}
+In our previous examples, the only symmetric spaces of non-compact type are $\mbb{H}^n$.
+\end{example}
+
+\begin{assumption}
+\textbf{We will consider only symmetric spaces of non-compact type}.
+\end{assumption}
+
+\subsection{The Hyperbolic Space}
+
+We give a short review of the hyperbolic spaces $\mbb{H}^n$.
+
+\begin{definition}[Hyperbolic Space]
+The \emph{$n$-dimensional hyperbolic space} $\mbb{H}^n$ is the unique simply connected $n$-dimensional Riemannian manifold with constant sectional curvature $-1$.
+\end{definition}
+
+There are several models for the hyperbolic space.
+
+\begin{definition}[Upper Half-Space Model for $\mbb{H}^n$]
+We define $\mbb{H}^n$ as the upper half-space in $\mbb{R}^n$ with distance defined by
+\[\diff s^2 = \frac{\sum_{i \in [n]} \diff x_i^2}{x_i^2} \text{.}\]
+\end{definition}
+
+\begin{proposition}
+\begin{enumerate}
+\item Geodesics in $\mbb{H}^2$ are either lines perpendicular to $\mbb{R}$ or half-circles with center on $\mbb{R}$.
+\item Circles in $\mbb{H}^2$ are Euclidean circles (with different centres and radii; the Euclidean centre is always higher).
+\item The area of a triangle in $\mbb{H}^2$ is always less than $\pi$.
+\item The distance between a point on one side of a triangle to the union of the $2$ other sides is always at most $2$.
+\item Given a line $\ell$ and a point $p$ outside of $\ell$, there are infinitely many lines through $p$ which do not intersect $\ell$.
+\item The isometries of $\mbb{H}^2$ are Möbius transformations.
+\item $\mrm{PSL}_2\prs{\mbb{R}}$ is a connected component of $\mrm{Isom}\mbb{H}^2$. The other component is non-orientation-preserving transformations.
+\end{enumerate}
+\end{proposition}
+
+\begin{example}
+$\mbb{H}^2 \times \mbb{H}^2$ is a symmetric space.
+\end{example}
+
+\subsection{Back to Symmetric Spaces}
+
+\begin{proposition}
+Let $X$ be a symmetric space. $\mrm{Isom}\prs{X}$ acts transitively on $X$.
+\end{proposition}
+
+\begin{proof}
+Let $x,y \in X$. Take a geodesic $\gamma$ between $x,y$ and find a mid-point $z$. Then reflect through $z$ via $i_z$.
+\end{proof}
+
+\begin{proposition}
+Let $X$ be a symmetric space. $\mrm{PSL}_2\prs{\mbb{R}}$ acts transitively on $X$.
+\end{proposition}
+
+\begin{proof}
+Take $i_z \circ i_x$.
+\end{proof}
+
+\begin{notation}
+Denote $\mrm{Isom}\prs{X}^\circ \ceq \mrm{PSL}_2\prs{\mbb{R}}$.
+\end{notation}
+
+\begin{fact}
+$\mrm{Isom}\prs{X} = F \ltimes \mrm{Isom}\prs{X}^\circ$.
+\end{fact}
+
+\begin{proposition}
+$\mrm{Isom}\prs{X}^\circ$ is a connected centre-free semisimple Lie group.
+\end{proposition}
+
+\begin{fact}
+A symmetric space of non-compact type has non-positive sectional curvature.
+\end{fact}
+
+\begin{proposition}
+Non-positive curvature is equivalent to convexity of the metric (in the sense of calculus).
+\end{proposition}
+
+Given a triangle $abc$ in $X$, take a triangle $a'b'c'$ in $\mbb{R}^2$ such that the distances are equal.
+The $\mrm{CAT}\prs{0}$ inequality gives, for a point on $bc$, that $d\prs{a, x} \leq d\prs{a', x'}$.
+The difference between $d\prs{a',x'} - d\prs{a',x'}$ is some way to measure the convexity of a space. It's bigger for spaces with more negative curvature.
+
+\begin{theorem}
+If $X$ is a symmetric space of non-compact type, then $\mrm{Isom}\prs{X}^\circ$ is a connected centre-free semisimple Lie group.
+\end{theorem}
+
+\section{Lie Groups \& Symmetric Spaces}
+
+\subsection{Lie Groups Correspond to Symmetric Spaces}
+
+\begin{definition}[Lie Group]
+A \emph{Lie group} is a group object in the category of analytic manifolds.
+\end{definition}
+
+\begin{definition}[Semisimple Lie Group]
+A Lie group is called \emph{semisimple} if it has no solvable normal subgroups of positive dimension.
+\end{definition}
+
+\begin{example}
+Let $X = \mbb{R}^n$. Then $\mrm{Isom}\prs{X}^\circ = \mrm{SO}\prs{n} \ltimes \mbb{R}^n$, where $\mbb{R}^n$ is solvable and normal. Hence $\mrm{Isom}\prs{X}^\circ$ is not semisimple.
+\end{example}
+
+\begin{proposition}
+A centre-free semisimple Lie group is a product of simple Lie groups.
+\end{proposition}
+
+\begin{fact}
+There is a complete list of all simple Lie groups.
+\end{fact}
+
+Some Lie groups we'll consider are the following.
+
+\begin{examples*}
+\enumthm
+\begin{enumerate}
+\item $\mrm{SL}_n\prs{\mbb{R}}$.
+\item $\mrm{PSL}_2\prs{\mbb{R}}$.
+\item $\mrm{SO}\prs{n,1} = \mrm{Isom}\prs{\mbb{H}^n}$.
+\item $\mrm{SO}\prs{2,1} \cong \mrm{SL}_2\prs{\mbb{R}}$.
+\item $\mrm{SO}\prs{3,1} \cong \mrm{SL}_2\prs{\mbb{C}}$.
+\end{enumerate}
+\end{examples*}
+
+\begin{theorem}
+For any simple non-compact Lie group $G$, there is a symmetric space $X$ such that $G \cong \mrm{Isom}\prs{X}^\circ$.
+\end{theorem}
+
+\begin{proof}
+$G$ admits a maximal compact subgroup $K$. One takes $X = \quot{G}{K}$ with a natural metric coming for the Killing form.
+\end{proof}
+
+\begin{corollary}
+There is a $1$-$1$ correspondence between semisimple Lie groups without compact factors and symmetric spaces of non-compact type.
+Simple Lie groups correspond to irreducible symmetric spaces.
+
+The correspondence sends a symmetric space $X$ to $\mrm{Isom}\prs{X}^\circ$, and a Lie group $G$ to $\quot{G}{K}$ with $K$ a maximal compact subgroup of $G$.
+\end{corollary}
+
+\subsection{The Symmetric Spaces of $\mrm{PSL}_n\prs{\mbb{R}}$ and $\mrm{SL}_n\prs{\mbb{R}}$}
+
+Let $G \ceq \mrm{SL}_n\prs{\mbb{R}}$ and $K \ceq \mrm{SO}\prs{n}$. We have the corresponding Lie algebras $\mfrak{sl}_n\prs{\mbb{R}}$ of matrices with trace $0$, and $\mfrak{so}\prs{n}$ of anti-symmetric matrices. Inside $\mfrak{sl}_n\prs{\mbb{R}}$ we have $S$, the symmetric matrices of trace $0$. 
+
+One can write $\mfrak{sl}_n\prs{\mbb{R}} = \mfrak{so}\prs{n} + S$.
+The corresponding symmetric space $P_n\prs{\mbb{R}} = \quot{G}{K}$ to $\mfrak{sl}_n\prs{\mbb{R}}$ has a model $P$, being the positive-definite unimodular (i.e. with $\det = 1$) $n \times n$ matrices.
+
+$G$ acts on $P$ by similarity,
+\[g \cdot P = g P g^t \text{.}\]
+This is transitive because any two quadratic forms are similar. We describe the metric at the identity. We have
+\[T_I\prs{P} = S \text{.}\]
+Then
+\[\trs{X,Y} = \tr\prs{XY}\]
+and
+\begin{align*}
+\exp \colon S &\to P \\
+X &\mapsto e^X = \sum_{n \geq 0} \frac{X^n}{n!} \text{.}
+\end{align*}
+
+\begin{fact}
+The symmetric space of $\mrm{SL}_3\prs{\mbb{R}}$ is $5$-dimensional.
+\end{fact}
+
+\begin{theorem}[Mostow]
+Every centre-free semisimple Lie group can be embedded in $\mrm{SL}_n\prs{\mbb{R}}$ for some $n \in \mbb{N}$, such that the image is transpose-invariant.
+\end{theorem}
+
+\begin{corollary}
+Any symmetric space of non-compact type can be embedded in $P_n\prs{\mbb{R}}$ in a totally-geodesic way (i.e. in a way where the geodesic between any two points of a subspace stay in the subspace).
+\end{corollary}
+
+\subsection{Ranks of Lie Groups \& Symmetric Spaces}
+
+\begin{definition}[The Rank of a Symmetric Space]
+Let $X$ be a symmetric space. The rank of a symmetric space is the dimension of a maximal totally-geodesic Euclidean subspace of $X$.
+\end{definition}
+
+\begin{example}
+$\mrm{rank}\prs{\mbb{H}^n} = 1$. We can embed a line in $\mbb{H}^n$, in a totally geodesic way. However, we cannot embed a plane in such a way, because the curvature of $\mbb{H}^n$ is $1$.
+
+Consider for example $\mbb{H}^3$ with axes $x,y,z$ and consider the subset $D \ceq \set{\prs{x,y,z}}{z = 1}$. The Riemannian metric is $\diff s^2 = \frac{\diff x^2 + \diff y^2 + \diff z^2}{z^2}$.
+The intrinsic metric inside $D$ is $\diff x^2 + \diff y^2$ which is flat. However, this isn't totally geodesic. If the Euclidean distance between points $p,q$ is $\ell$, the geodesic inside $\mbb{H}^2$, which passes through the complement of $D$, is actually of length $\log\prs{\ell}$. 
+\end{example}
+
+\begin{example}
+Let $X \ceq \mrm{P}_3\prs{\mbb{R}} = \quot{\mrm{SL}_3\prs{\mbb{R}}}{\mrm{SO}\prs{5}}$.
+This is $5$-dimensional and of rank $2$.
+
+Inside this is $\set{A = \pmat{x & & \\ & y & \\ & & z}}{\det A = 1}$ which is a flat plane.
+\end{example}
+
+\begin{fact}
+Let $X$ be a symmetric space of rank $r$. Then $G \ceq \mrm{Isom}\prs{X}^\circ$ acts transitively on pairs $\prs{F,p}$ where $F$ is a flat (i.e. totally geodesic) $r$-plane, and $p \in F$.
+\end{fact}
+
+\begin{fact}
+In rank $2$, $G$ does not act transitively on geodesics.
+\end{fact}
+
+\begin{example}
+Examine $X = \mrm{P}_3\prs{\mbb{R}}$. Consider matrices of the forms
+\begin{align*}
+c_1\prs{t} &\ceq \exp\prs{t \pmat{1 & & \\ & 0 & \\ & & - 1}} = \pmat{\mu & & \\ & 0 & \\ & & \mu^{-1}} \\
+c_2\prs{t} &\ceq \exp\prs{t \cdot \pmat{1 & & \\ & 1 & \\ & & - 2}} = \pmat{\lambda & & \\ & \lambda & \\ & & \lambda^{-2}} \text{.}
+\end{align*}
+Every geodesic is contained in a plane. A regular geodesic is contained in a unique (flat) plane, and a singular geodesic is contained in many (flat) planes.
+\end{example}
+
+\begin{definition}[The Rank of a Simple Lie Group]
+The \emph{rank of a simple Lie group} $G$ is the maximal dimension of a torus, where by torus we mean a subgroup which is diagonalisable over $\mbb{C}$.
+\end{definition}
+
+\begin{example}
+If $G \ceq \mrm{SL}_n\prs{\mbb{R}}$, we have $\rank \prs{G} = n-1$.
+\end{example}
+
+\begin{fact}
+\begin{enumerate}
+\item Rank $1$ of a Lie group corresponds to negative curvature of the symmetric space.
+\item Higher rank of a Lie group implies rigidity of the symmetric space.
+\end{enumerate}
+\end{fact}
+
+\end{document}
